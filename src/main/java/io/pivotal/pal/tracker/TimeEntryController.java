@@ -18,11 +18,8 @@ public class TimeEntryController {
     @PostMapping("/time-entries")
     public ResponseEntity<TimeEntry> create(@RequestBody TimeEntry timeEntryToCreate) {
         TimeEntry timeEntry = timeEntryRepository.create(timeEntryToCreate);
-        if (timeEntry != null) {
-            return ResponseEntity.created(null).body(timeEntry);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return ResponseEntity.created(null).body(timeEntry);
+
     }
 
     @GetMapping("/time-entries/{id}")
